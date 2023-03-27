@@ -1,0 +1,6 @@
+mc-webhook:
+  image-names: itzg/minecraft-bedrock-server
+  webhooks:
+    json1:
+      type: json
+      url: https://webhook.site/ad1940df-7cee-44b2-95b3-4dc8a03f6ed8
