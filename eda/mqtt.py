@@ -29,7 +29,6 @@ In an EDA rulebook (note: fake collection, cloin.minecraft does not exist):
 """
 
 import asyncio
-import json
 import logging
 import os
 from typing import Any, Dict
