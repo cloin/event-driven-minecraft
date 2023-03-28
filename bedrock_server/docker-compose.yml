@@ -1,14 +1,19 @@
 version: '3.4'
 
+volumes:
+  mosquitto-data:
+  mosquitto-logs:
+
 services:
-  bds:
+  minecraft-server:
     image: itzg/minecraft-bedrock-server
+    container_name: minecraft-server
     environment:
       EULA: "TRUE"
       GAMEMODE: creative
       SERVER_NAME: "McNs"
       ALLOW_CHEATS: "true"
-      ALLOW_LIST_USERS: "DadRobots,RebelPilot21587,ElsieGoober"
+        #ALLOW_LIST_USERS: "DadRobots,RebelPilot21587,ElsieGoober"
       LEVEL_TYPE: DEFAULT
     ports:
       - 19132:19132/udp
@@ -21,20 +26,57 @@ services:
     sysctls:
       net.ipv4.ip_local_port_range: 39132 39133
 
-  bds_bridge:
+  minecraft-rest:
     image: macchie/minecraft-bedrock-server-bridge
+    container_name: minecraft-rest
+    restart: unless-stopped
+    depends_on:
+      - minecraft-server
     environment:
-      #- TELEGRAM_BOT_TOKEN=12345
-      #- TELEGRAM_BOT_ADMINS=username1,username2
       - ENABLE_API=true
     ports:
       - 17394:17394
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
 
+  mosquitto:
+    image: eclipse-mosquitto:latest
+    container_name: mosquitto
+    restart: unless-stopped
+    ports:
+      - "1883:1883"
+      - "9001:9001"
+    volumes:
+      - ./mosquitto.conf:/mosquitto/config/mosquitto.conf:ro
+      - mosquitto-data:/mosquitto/data
+      - mosquitto-logs:/mosquitto/log
+
+  mosquitto_test:
+    image: eclipse-mosquitto:latest
+    container_name: mosquitto_test
+    restart: unless-stopped
+    depends_on:
+      - mosquitto
+    command: "mosquitto_sub -h mosquitto -I message_logger -F '\e[92m%t \e[96m%p\e[0m' -q 0 -t '#'"
+
   webhook:
     image: ghcr.io/edward3h/mc-webhook:0.4
-    restart: "unless-stopped"
+    container_name: webhook
+    restart: unless-stopped
+    depends_on:
+      - mosquitto
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - ./config.yml:/config.yml
+      - ./webhook-config.yml:/config.yml
+
+  # # This will attach a rulebook with mqtt source
+  # # that will listen for players joining minecraft
+  # # world and then send a command to minecraft-rest
+  # # to say hi to the joining player
+  #   ansible-rulebook:
+  #     image: quay.io/aizquier/ansible-rulebook:v0.11.0
+  #     container_name: ansible-rulebook
+  #     restart: unless-stopped
+  #     depends_on:
+  #       - mosquitto
+  
