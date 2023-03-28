@@ -8,6 +8,7 @@ This stack stands up Minecraft and allows for responding to events in Minecraft 
   - `webhook`: Prints server events to webhook and/or mqtt [edward3h/minecraft-webhook](https://github.com/edward3h/minecraft-webhook)
   - `mosquitto`: Minimal MQTT broker [eclipse/mosquitto](https://github.com/eclipse/mosquitto)
   - `mosquitto_test`: Subscribes to all topics on mqtt broker and prints messages [edward3h/minecraft-webhook](https://github.com/edward3h/docker-bds-integration-test/blob/029cd5f62241dc79d05d5fe5d584f7d246844385/docker-compose.yml#L71-L76)
+  - `ansible-rulebook`: ansible-rulebook CLI that waits for messages on mqtt topic and executes some action in response
 
 ### Event-Driven Ansible
 
