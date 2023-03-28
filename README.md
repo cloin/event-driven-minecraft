@@ -10,4 +10,6 @@ This is sort of a limited test-run of responding to events in Minecraft with som
 
 ### Event-Driven Ansible
 
-Additionally, in the eda directory there is an Event-Driven Ansible source plugin for mqtt that consumes messages from a topic on the mqtt broker.
+Additionally, in the eda directory there is an Event-Driven Ansible source plugin for mqtt that consumes messages from a topic on the mqtt broker. 
+
+I could have just used webhooks but mqtt is a little more fun!
