@@ -1,7 +1,7 @@
 """
 mqtt.py
 
-An ansible-rulebook event source plugin for receiving events via a mqtt topic.
+An ansible-rulebook event source plugin for receiving events via an mqtt topic.
 
 Arguments:
     host:      The host where the mqtt topic is hosted
