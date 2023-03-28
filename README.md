@@ -12,4 +12,6 @@ This stack stands up Minecraft and allows for responding to events in Minecraft 
 
 ### Event-Driven Ansible
 
+Event-Driven Ansible is a scalable, responsive automation solution that can process events containing discrete, actionable intelligence; determine the appropriate response to the event; then execute automated actions to address or remediate the event.
+
 The `ansible-rulebook` service mounts the contents of `/eda/` and runs the ansible-rulebook CLI against an inventory and rulebook. Additionally, by passing `-S` to the ansible-rulebook command, the `mqtt.py` source plugin is loaded from the `/eda` directory to read and act on messages on the mqtt topic referenced by the rulebook.
