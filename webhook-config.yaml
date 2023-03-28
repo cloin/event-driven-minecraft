@@ -3,7 +3,7 @@ mc-webhook:
   webhooks:
     json1:
       type: json
-      url: https://webhook.site/ad1940df-7cee-44b2-95b3-4dc8a03f6ed8
+      url: https://webhook.site/a1234-1234-12345
     mqtt1:
       type: mqtt
       topic: messages
