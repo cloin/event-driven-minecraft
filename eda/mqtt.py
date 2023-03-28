@@ -7,6 +7,10 @@ Arguments:
     host:      The host where the mqtt topic is hosted
     topic:     The mqtt topic
     
+Test script stand-alone by exporting MQTT_HOST and MQTT_TOPIC as environment variables
+    - $ export MQTT_HOST=localhost
+    - $ export MQTT_TOPIC=messages
+    
 - name: Minecraft events
   hosts: localhost
   sources:
