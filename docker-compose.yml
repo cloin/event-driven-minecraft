@@ -69,14 +69,14 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./webhook-config.yml:/config.yml
 
-  # # This will attach a rulebook with mqtt source
-  # # that will listen for players joining minecraft
-  # # world and then send a command to minecraft-rest
-  # # to say hi to the joining player
-  #   ansible-rulebook:
-  #     image: quay.io/aizquier/ansible-rulebook:v0.11.0
-  #     container_name: ansible-rulebook
-  #     restart: unless-stopped
-  #     depends_on:
-  #       - mosquitto
+  ansible-rulebook:
+    build:
+      dockerfile: eda-dockerfile
+    container_name: ansible-rulebook
+    restart: unless-stopped
+    depends_on:
+      - mosquitto
+    command: ["ansible-rulebook", "--rulebook", "/eda/minecraft-rulebook.yml", "-i", "/eda/inventory.yml", "-S", "/eda/"]
+    volumes:
+      - ./eda:/eda
   

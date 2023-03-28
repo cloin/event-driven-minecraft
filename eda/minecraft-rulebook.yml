@@ -1,0 +1,12 @@
+- name: Minecraft events
+  hosts: localhost
+  sources:
+    - mqtt:
+        host: mosquitto
+        topic: messages
+
+  rules:
+    - name: New minecraft event
+      condition: event.type is defined
+      action:
+        debug:
