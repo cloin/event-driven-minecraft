@@ -34,7 +34,7 @@ if __name__ == "__main__":
     host = os.environ.get('MQTT_HOST')
 
     class MockQueue:
-        print(f"Waiting for messages on '{topic}' table...")
+        print(f"Waiting for messages on '{topic}'...")
         async def put(self, event):
             print(event)
 
