@@ -12,6 +12,4 @@ This stack stands up Minecraft and allows for responding to events in Minecraft 
 
 ### Event-Driven Ansible
 
-Additionally, in the eda directory there is an Event-Driven Ansible source plugin for mqtt that consumes messages from a topic on the mqtt broker. 
-
-I could have just used webhooks but mqtt is a little more fun!
+The `ansible-rulebook` service mounts the contents of `/eda/` and runs the ansible-rulebook CLI against an inventory and rulebook. Additionally, by passing `-S` to the ansible-rulebook command, the `mqtt.py` source plugin is loaded from the `/eda` directory to read and act on messages on the mqtt topic referenced by the rulebook.
