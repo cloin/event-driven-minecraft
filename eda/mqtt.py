@@ -11,18 +11,21 @@ Test script stand-alone by exporting MQTT_HOST and MQTT_TOPIC as environment var
     - $ export MQTT_HOST=localhost
     - $ export MQTT_TOPIC=messages
     
-- name: Minecraft events
-  hosts: localhost
-  sources:
-    - cloin.minecraft.mqtt:
-        host: localhost
-        topic: messages
+In an EDA rulebook (note: fake collection, cloin.minecraft does not exist): 
 
-  rules:
-    - name: New minecraft event
-      condition: event.type is defined
-      action:
-        debug:
+    - name: Minecraft events
+      hosts: localhost
+      sources:
+        - cloin.minecraft.mqtt:
+            host: localhost
+            topic: messages
+
+      rules:
+        - name: New minecraft event
+          condition: event.type is defined
+          action:
+            debug:
+            
 """
 
 import asyncio
