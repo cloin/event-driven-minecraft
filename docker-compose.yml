@@ -80,6 +80,6 @@ services:
       - ./eda:/eda
     command: >
       ansible-rulebook
-      --rulebook /eda/minecraft.yml
+      --rulebook /eda/minecraft-rulebook.yml
       --inventory /eda/inventory.yml
       --source-dir /eda/
