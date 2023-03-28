@@ -1,5 +1,5 @@
 """
-hqtt.py
+mqtt.py
 
 An ansible-rulebook event source plugin for receiving events via a mqtt topic.
 
