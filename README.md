@@ -1,4 +1,4 @@
-# minecraft demo fun
+# event-driven minecraft super fun kids time excellent
 
 ### `docker-compose.yml` stands up a minecraft bedrock server with some complementary services
   - `minecraft-rest`: REST API that can be used to send commands to minecraft (e.g. `say Welcome, new user!` where `say` is the command being executed)
