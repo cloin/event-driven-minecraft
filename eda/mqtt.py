@@ -27,7 +27,7 @@ async def main(queue: asyncio.Queue, args: Dict[str, Any]):
         async with client.messages() as messages:
             await client.subscribe(f'{topic}/#')
             async for message in messages:
-                await queue.put(message.payload)
+                await queue.put(message.payload.decode())
 
 if __name__ == "__main__":
     topic = os.environ.get('MQTT_TOPIC')
