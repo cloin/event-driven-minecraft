@@ -11,9 +11,9 @@ services:
     environment:
       EULA: "TRUE"
       GAMEMODE: creative
-      SERVER_NAME: "McNs"
+      SERVER_NAME: "YOUR SERVER"
       ALLOW_CHEATS: "true"
-        #ALLOW_LIST_USERS: "DadRobots,RebelPilot21587,ElsieGoober"
+      ALLOW_LIST_USERS: "user1,user2,user3"
       LEVEL_TYPE: DEFAULT
     ports:
       - 19132:19132/udp
