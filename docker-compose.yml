@@ -76,7 +76,10 @@ services:
     restart: unless-stopped
     depends_on:
       - mosquitto
-    command: ["ansible-rulebook", "--rulebook", "/eda/minecraft-rulebook.yml", "-i", "/eda/inventory.yml", "-S", "/eda/"]
     volumes:
       - ./eda:/eda
-  
+    command: >
+      ansible-rulebook
+      --rulebook /eda/minecraft.yml
+      --inventory /eda/inventory.yml
+      --source-dir /eda/
