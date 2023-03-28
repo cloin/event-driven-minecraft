@@ -4,7 +4,7 @@
   - `minecraft-rest`: REST API that can be used to send commands to minecraft (e.g. `say Welcome, new user!` where `say` is the command being executed)
   - `webhook`: Prints server events to webhook and/or mqtt
   - `mosquitto`: Minimal MQTT broker
-  - `mostquitto_test`: Subscribes to all topics on mqtt broker and prints messages
+  - `mosquitto_test`: Subscribes to all topics on mqtt broker and prints messages
 
 ### Event-Driven Ansible
 
