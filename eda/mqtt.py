@@ -5,9 +5,20 @@ An ansible-rulebook event source plugin for receiving events via a mqtt topic.
 
 Arguments:
     host:      The host where the mqtt topic is hosted
-    port:      The port where the mqtt server is listening
     topic:     The mqtt topic
+    
+- name: Minecraft events
+  hosts: localhost
+  sources:
+    - cloin.minecraft.mqtt:
+        host: localhost
+        topic: messages
 
+  rules:
+    - name: New minecraft event
+      condition: event.type is defined
+      action:
+        debug:
 """
 
 import asyncio
