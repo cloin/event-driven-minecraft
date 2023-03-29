@@ -1,9 +1,9 @@
 mc-webhook:
   image-names: itzg/minecraft-bedrock-server
   webhooks:
-    json1:
-      type: json
-      url: https://webhook.site/a1234-1234-12345
+    # json1:
+    #   type: json
+    #   url: https://webhook.site/a1234-1234-12345
     mqtt1:
       type: mqtt
       topic: messages
