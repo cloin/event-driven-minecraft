@@ -1,10 +1,12 @@
 # event-driven minecraft
 
+## Overview 
+
 This stack stands up Minecraft and allows for responding to events in Minecraft with some actions. This currently deploys the bedrock server because that's supported on the kinds of devices my kids play Minecraft on. There are not a whole lot of actions that can be performed in bedrock worlds afaik, but you can run some nice party tricks. For instance, when my son joins the world, I can have the server send him a nice message even if I'm not playing the game with him.
 
 Some of the Minecraft server configuration can be overridden by host environment variables. To set a Minecraft server name for example, you can run:
 ```
-$ sudo MC_SERVER_NAME=Cloin docker compose up 
+$ sudo MC_SERVER_NAME=Cloin docker compose up -d
 ```
 Check `docker-compose.yml` for others that can be overridden.
 
@@ -21,3 +23,9 @@ Check `docker-compose.yml` for others that can be overridden.
 Event-Driven Ansible is a scalable, responsive automation solution that can process events containing discrete, actionable intelligence; determine the appropriate response to the event; then execute automated actions to address or remediate the event.
 
 The `ansible-rulebook` service mounts the contents of `/eda/` and runs the ansible-rulebook CLI against an inventory and rulebook. Additionally, by passing `--source-dir` to the ansible-rulebook command, the `mqtt.py` source plugin is loaded from the `/eda` directory to read and act on messages on the mqtt topic referenced by the rulebook.
+
+Check out the `/eda` README for me.
+
+## Room for improvement? Certainly!
+
+My kids are pretty new to Minecraft and so am I! One awesome improvement here would be eliminate the webhook service and replace it with a service that sends the Minecraft server log lines to MQTT directly. This would allow me to act on more event types than are currently supported by the webhook service. 
