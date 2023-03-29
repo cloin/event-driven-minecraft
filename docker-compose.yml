@@ -9,12 +9,12 @@ services:
     image: itzg/minecraft-bedrock-server
     container_name: minecraft-server
     environment:
-      EULA: "TRUE"
-      GAMEMODE: creative
-      SERVER_NAME: "YOUR SERVER"
-      ALLOW_CHEATS: "true"
+      EULA: ${MC_EULA-TRUE}
+      GAMEMODE: ${MC_GAMEMODE-creative}
+      SERVER_NAME: ${MC_SERVER_NAME-YOUR_SERVER}
+      ALLOW_CHEATS: ${MC_ALLOW_CHEATS-true}
       # ALLOW_LIST_USERS: "user1,user2,user3"
-      LEVEL_TYPE: DEFAULT
+      LEVEL_TYPE: ${MC_LEVEL_TYPE-DEFAULT}
     ports:
       - 19132:19132/udp
     volumes:
