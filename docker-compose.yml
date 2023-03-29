@@ -83,3 +83,4 @@ services:
       --rulebook /eda/minecraft-rulebook.yml
       --inventory /eda/inventory.yml
       --source-dir /eda/
+      --verbose
