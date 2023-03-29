@@ -6,7 +6,8 @@
         topic: messages
 
   rules:
-    - name: New minecraft event
-      condition: event.type is defined
+    - name: Player has connected to server
+      condition: event.type == "PLAYER_CONNECTED"
       action:
-        debug:
+        run_playbook:
+          name: /eda/minecraft_cmd.yml

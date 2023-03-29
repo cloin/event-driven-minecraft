@@ -1,0 +1,15 @@
+---
+- name: Runs a command on a minecraft server
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  tasks:
+
+  - name: Send command to minecraft-rest
+    ansible.builtin.uri:
+      url: http://minecraft-rest:17394/execute
+      method: POST
+      body_format: json
+      body:
+        command: "say Hello, {{ ansible_eda.event.playerName }}"
+    register: rest_command
