@@ -6,7 +6,7 @@
         topic: messages
 
   rules:
-    - name: Player connection events
+    - name: Respond to player spawn events
       condition: event.container.name == "minecraft-server" and event.mc_event_type == "Spawned"
       action:
         run_playbook:
