@@ -5,11 +5,11 @@
   gather_facts: false
   tasks:
 
-  - name: Send command to minecraft-rest
+  - name: Say hello on spawn event 
     ansible.builtin.uri:
       url: http://minecraft-rest:17394/execute
       method: POST
       body_format: json
       body:
-        command: "say Hello, {{ ansible_eda.event.playerName }}"
+        command: "say Hello, {{ ansible_eda.event.mc_player_name }}"
     register: rest_command

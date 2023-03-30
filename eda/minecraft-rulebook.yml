@@ -6,8 +6,8 @@
         topic: messages
 
   rules:
-    - name: Player has connected to server
-      condition: event.type == "PLAYER_CONNECTED"
+    - name: Player connection events
+      condition: event.container.name == "minecraft-server" and event.mc_event_type == "Spawned"
       action:
         run_playbook:
-          name: /eda/minecraft_cmd.yml
+          name: /eda/minecraft-playbook.yml

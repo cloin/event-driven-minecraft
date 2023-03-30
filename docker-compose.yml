@@ -3,6 +3,7 @@ version: '3.4'
 volumes:
   mosquitto-data:
   mosquitto-logs:
+  minecraft-logs:
 
 services:
   minecraft-server:
@@ -47,27 +48,46 @@ services:
       - "1883:1883"
       - "9001:9001"
     volumes:
-      - ./mosquitto.conf:/mosquitto/config/mosquitto.conf:ro
+      - ./mosquitto.conf:/mosquitto/config/mosquitto.conf
       - mosquitto-data:/mosquitto/data
       - mosquitto-logs:/mosquitto/log
-
-  mosquitto_test:
+  
+  mosquitto_messages:
     image: eclipse-mosquitto:latest
-    container_name: mosquitto_test
+    container_name: mosquitto_messages
     restart: unless-stopped
     depends_on:
       - mosquitto
     command: "mosquitto_sub -h mosquitto -I message_logger -F '\e[92m%t \e[96m%p\e[0m' -q 0 -t '#'"
-
-  webhook:
-    image: ghcr.io/edward3h/mc-webhook:0.4
-    container_name: webhook
+        
+  logstash:
+    build:
+      dockerfile: logstash-dockerfile
+    container_name: logstash
     restart: unless-stopped
+    environment:
+      - "LS_JAVA_OPTS=-Xmx1g -Xms1g"
+      - "XPACK_MONITORING_ENABLED=false"
+    volumes:
+      - ./logstash.conf:/usr/share/logstash/pipeline/logstash.conf
+    ports:
+      - "5044:5044"
     depends_on:
       - mosquitto
+
+  filebeat:
+    image: docker.elastic.co/beats/filebeat:7.17.9
+    container_name: filebeat
+    user: root
+    restart: unless-stopped
+    command: ["filebeat", "-e", "-strict.perms=false"]
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-      - ./webhook-config.yml:/config.yml
+      - ./filebeat.yml:/usr/share/filebeat/filebeat.yml:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /var/lib/docker/containers/:/var/lib/docker/containers/:ro
+    depends_on:
+      - logstash
+      - minecraft-server
 
   ansible-rulebook:
     build:
