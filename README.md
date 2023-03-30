@@ -4,6 +4,8 @@
 
 This stack stands up Minecraft and allows for responding to events in Minecraft with some actions. This currently deploys the bedrock server because that's supported on the kinds of devices my kids play Minecraft on. There are not a whole lot of actions that can be performed in bedrock worlds afaik, but you can run some nice party tricks. For instance, when my son joins the world, I can have the server send him a nice message even if I'm not playing the game with him.
 
+### Run it
+
 Some of the Minecraft server configuration can be overridden by host environment variables. To set a Minecraft server name for example, you can run:
 ```
 $ sudo MC_SERVER_NAME=Cloin docker compose up -d
