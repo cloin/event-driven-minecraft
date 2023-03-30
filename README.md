@@ -13,7 +13,7 @@ $ sudo MC_SERVER_NAME=Cloin docker compose up -d
 Check `docker-compose.yml` for others that can be overridden.
 
 ### `docker-compose.yml` stands up a minecraft bedrock server with some complementary services
-  - [`mincraft-server`]((https://github.com/itzg/docker-minecraft-bedrock-server)): Minecraft bedrock server 
+  - [`mincraft-server`](https://github.com/itzg/docker-minecraft-bedrock-server): Minecraft bedrock server 
   - [`minecraft-rest`](https://github.com/macchie/minecraft-bedrock-server-bridge): REST API that can be used to send commands to minecraft (e.g. `say Welcome, new user!` where `say` is the command being executed)
   - `filebeat`: Ships `minecraft-server` logs to logstash
   - `logstash`: Receives `minecraft-server` logs from `filebeat` and sends them to an mqtt topic
