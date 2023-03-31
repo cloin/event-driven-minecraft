@@ -17,8 +17,8 @@ Check `docker-compose.yml` for others that can be overridden.
 ### `docker-compose.yml` stands up a minecraft bedrock server with some complementary services
   - [`mincraft-server`](https://github.com/itzg/docker-minecraft-bedrock-server): Minecraft bedrock server 
   - [`minecraft-rest`](https://github.com/macchie/minecraft-bedrock-server-bridge): REST API that can be used to send commands to minecraft (e.g. `say Welcome, new user!` where `say` is the command being executed)
-  - `filebeat`: Ships `minecraft-server` logs to logstash
-  - `logstash`: Receives `minecraft-server` logs from `filebeat` and sends them to an mqtt topic
+  - [`filebeat`](https://github.com/elastic/beats): Ships `minecraft-server` logs to logstash
+  - [`logstash`](https://github.com/elastic/logstash): Receives `minecraft-server` logs from `filebeat` and sends them to an mqtt topic
   - [`mosquitto`](https://github.com/eclipse/mosquitto): Minimal MQTT broker 
   - `mosquitto_messages`: Subscribes to all topics on mqtt broker and prints messages to stdout. Useful to see if log output is received by mosquitto.
   - [`ansible-rulebook`](https://github.com/ansible/ansible-rulebook): ansible-rulebook CLI running a rulebook that waits for messages on mqtt topic and executes some action in response. The rulebook loaded by default (configured in `docker-compose.yml`) waits for new player spawn events and then executes an action to send a welcome chat visible to all players.
