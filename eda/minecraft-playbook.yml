@@ -11,5 +11,5 @@
       method: POST
       body_format: json
       body:
-        command: "say Hello, {{ ansible_eda.event.mc_player_name }}"
+        command: "say Hello, {{ ansible_eda.event.mc_player_name }}! Play nice!"
     register: rest_command
