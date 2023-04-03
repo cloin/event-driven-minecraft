@@ -21,6 +21,7 @@ Check `docker-compose.yml` for others that can be overridden.
   - [`minecraft-rest`](https://github.com/macchie/minecraft-bedrock-server-bridge): REST API that can be used to send commands to minecraft (e.g. `say Welcome, new user!` where `say` is the command being executed)
   - [`filebeat`](https://github.com/elastic/beats): Ships `minecraft-server` logs to logstash
   - [`logstash`](https://github.com/elastic/logstash): Receives `minecraft-server` logs from `filebeat` and sends them to an mqtt topic
+    - This is optional. You could probably just use the [http output](https://www.elastic.co/guide/en/logstash/master/plugins-outputs-http.html) from filebeat, but I wanted to configure Logstash to send log events to MQTT to showcase a custom event source plugin. 
   - [`mosquitto`](https://github.com/eclipse/mosquitto): Minimal MQTT broker 
   - `mosquitto_messages`: Runs a command to subscribe to all topics on mqtt broker and print messages to stdout. Useful to see if log output is received by mosquitto.
   - [`ansible-rulebook`](https://github.com/ansible/ansible-rulebook): ansible-rulebook CLI running a rulebook that waits for messages on mqtt topic and executes some action in response. The rulebook loaded by default (configured in `docker-compose.yml`) waits for new player spawn events and then executes an action to send a welcome chat visible to all players.
