@@ -20,7 +20,7 @@ Check `docker-compose.yml` for others that can be overridden.
   - [`filebeat`](https://github.com/elastic/beats): Ships `minecraft-server` logs to logstash
   - [`logstash`](https://github.com/elastic/logstash): Receives `minecraft-server` logs from `filebeat` and sends them to an mqtt topic
   - [`mosquitto`](https://github.com/eclipse/mosquitto): Minimal MQTT broker 
-  - `mosquitto_messages`: Subscribes to all topics on mqtt broker and prints messages to stdout. Useful to see if log output is received by mosquitto.
+  - `mosquitto_messages`: Runs a command to subscribe to all topics on mqtt broker and print messages to stdout. Useful to see if log output is received by mosquitto.
   - [`ansible-rulebook`](https://github.com/ansible/ansible-rulebook): ansible-rulebook CLI running a rulebook that waits for messages on mqtt topic and executes some action in response. The rulebook loaded by default (configured in `docker-compose.yml`) waits for new player spawn events and then executes an action to send a welcome chat visible to all players.
   
 ### Event-Driven Ansible
