@@ -1,4 +1,4 @@
-FROM quay.io/aizquier/ansible-rulebook:v0.11.0
+FROM quay.io/ansible/ansible-rulebook:v0.12.0
 
-RUN pip install asyncio-mqtt aiokafka
+RUN pip install asyncio-mqtt
 RUN ansible-galaxy collection install ansible.eda
